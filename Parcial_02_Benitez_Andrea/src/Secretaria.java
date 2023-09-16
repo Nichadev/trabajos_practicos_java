@@ -10,5 +10,19 @@
  * @author andrea
  */
 public class Secretaria extends Persona {
-    private int id_secretaria;
+    private String rango;
+
+    public Secretaria(String rango, String nombre, String apellido, int dni) {
+        super(nombre, apellido, dni);
+        this.rango = rango;
+    }
+
+    public String getRango() {
+        return rango;
+    }
+
+    public void setRango(String rango) {
+        this.rango = rango;
+    }
+
 }

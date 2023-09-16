@@ -1,6 +1,4 @@
 
-import java.util.Date;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -14,15 +12,12 @@ public abstract class Persona {
     private String nombre;
     private String apellido;
     private int dni;
-    private Date fecha_nacim;
-    private String correo;
 
-    public Persona(String nombre, String apellido, int dni, Date fecha_nacim, String correo) {
+    public Persona(String nombre, String apellido, int dni) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        this.fecha_nacim = fecha_nacim;
-        this.correo = correo;
+        
     }
 
     public String getNombre() {
@@ -48,25 +43,4 @@ public abstract class Persona {
     public void setDni(int dni) {
         this.dni = dni;
     }
-
-    public Date getFecha_nacim() {
-        return fecha_nacim;
-    }
-
-    public void setFecha_nacim(Date fecha_nacim) {
-        this.fecha_nacim = fecha_nacim;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-    
-    
-    
-    
-    
 }
