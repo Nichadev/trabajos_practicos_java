@@ -134,29 +134,19 @@ public class clinica_frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*
-        Listar turnos por Profesional y Especialidad. Dentro de cada especialidad ordenar por
-orden de llegada.
-Nota: en cada turno mostrar que Secretaria/o agendo el turno.
-        */
+        
         ArrayList<Especialidad> ListaEspecialidades = new ArrayList<>();
         
         Especialidad esp1 = new Especialidad(191, "Radiología");
         Especialidad esp2 = new Especialidad(100, "Cardiología");
         Especialidad esp3 = new Especialidad(30, "Pediatría");
         
-        ListaEspecialidades.add(esp2);
-        ListaEspecialidades.add(esp1);
-        ListaEspecialidades.add(esp3);
-        
         //creacion de los profesionales
         ArrayList<Profesional> ListaProfesionales = new ArrayList<>();
         
         Profesional p1 = new Profesional(1,"Jennie", "Kim", 30345432);
-        Profesional p2 = new Profesional(2,"Jisoo", "Kim", 30345432);
-        
-        ListaProfesionales.add(p1);
-        ListaProfesionales.add(p2);
+        Profesional p2 = new Profesional(2,"Jisoo", "Kim", 33345432);
+        Profesional p3 = new Profesional(3,"Yuna", "Kang", 36345432);
         
         //creacion de los pacientes
         Paciente pa1 = new Paciente(4, "Rose", "Park", 44154436, "dolor de cabeza");
@@ -166,19 +156,21 @@ Nota: en cada turno mostrar que Secretaria/o agendo el turno.
         Secretaria sec1 = new Secretaria("secretaría, piso1", "Carlos", "Lopez", 16345433);
         Secretaria sec2 = new Secretaria("secretaría, piso1", "Vilma", "Benitez", 16344453);
         
-        //agenda de turnos
-        ArrayList <Turno> AgendaTur = new ArrayList<>();
-        Date fec1 = new Date(123,8,12);
+        //agregar cada especialidad a la lista especialidades
+        ListaEspecialidades.add(esp1);
+        ListaEspecialidades.add(esp2);
+        ListaEspecialidades.add(esp3);
         
-        //agregación de los turnos a la lista
-        AgendaTur.add(new Turno(2,fec1,pa1,sec2));
-        AgendaTur.add(new Turno(1,fec1,pa2,sec1));
         
-        //se le agrega la lista al metodo set de turno de especialidad
-        esp1.setTur(AgendaTur);
         
-        //clase para ordenar los turnos por orden de llegada
-        Collections.sort(AgendaTur, Comparator.comparingInt(Turno::getNro_turno));
+        //agregar cada profesional a la lista de profesionales
+        ListaProfesionales.add(p1);
+        ListaProfesionales.add(p2);
+        ListaProfesionales.add(p3);
+        
+     
+        
+    
         
 
 
