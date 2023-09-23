@@ -12,16 +12,16 @@ import java.util.ArrayList;
  */
 public class Especialidad {
     private int id_especialidad;
-    private String area;
+    private String nombre;
     private ArrayList<Turno> tur;
 
     public Especialidad() {
         this.id_especialidad = 0;
-        this.area = null;
+        this.nombre = null;
     }
-    public Especialidad(int id_especialidad, String area) {
+    public Especialidad(int id_especialidad, String nombre) {
         this.id_especialidad = id_especialidad;
-        this.area = area;
+        this.nombre = nombre;
     }
 
     public int getId_especialidad() {
@@ -32,12 +32,12 @@ public class Especialidad {
         this.id_especialidad = id_especialidad;
     }
 
-    public String getArea() {
-        return area;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setArea(String area) {
-        this.area = area;
+    public void setNombre(String area) {
+        this.nombre = area;
     }
 
     public ArrayList<Turno> getTur() {

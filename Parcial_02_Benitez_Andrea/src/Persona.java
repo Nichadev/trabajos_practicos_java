@@ -27,7 +27,8 @@ public abstract class Persona {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    
+    
     public String getApellido() {
         return apellido;
     }

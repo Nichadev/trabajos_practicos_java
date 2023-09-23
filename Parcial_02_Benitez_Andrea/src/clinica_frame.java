@@ -33,6 +33,8 @@ public class clinica_frame extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +52,20 @@ public class clinica_frame extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("EJERCICIO 4");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("EJERCICIO 5");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,6 +73,8 @@ public class clinica_frame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(121, 121, 121)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(136, Short.MAX_VALUE))
@@ -66,9 +84,13 @@ public class clinica_frame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,6 +119,7 @@ public class clinica_frame extends javax.swing.JFrame {
         //agenda de turnos
         ArrayList <Turno> AgendaTur = new ArrayList<>();
         Date fec1 = new Date(123,8,12);
+        
         //agregación de los turnos a la lista
         AgendaTur.add(new Turno(2,fec1,pa1,sec2));
         AgendaTur.add(new Turno(1,fec1,pa2,sec1));
@@ -109,10 +132,10 @@ public class clinica_frame extends javax.swing.JFrame {
         
         for(int i = 0; i<especialidades.size();i++){
             
-            if(especialidades.get(i).getId_especialidad() == 192){
+            if(especialidades.get(i).getId_especialidad() == 191){
                 
                 System.out.println("---------------------------------------------------------");
-                System.out.println("----------- Especialidad " + especialidades.get(i).getArea() + " -----------");
+                System.out.println("----------- Especialidad " + especialidades.get(i).getNombre() + " -----------");
                 
                 for(Turno tr : especialidades.get(i).getTur()) {
                     
@@ -126,20 +149,23 @@ public class clinica_frame extends javax.swing.JFrame {
                     }   
                 }
             }
-            else{
-                System.out.println("No se encontró la especialidad");
-            }
-        break;
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        ArrayList<Especialidad> ListaEspecialidades = new ArrayList<>();
+        ArrayList<Especialidad> ListaEspecialidades1 = new ArrayList<>();
+        ArrayList<Especialidad> ListaEspecialidades2 = new ArrayList<>();
+        ArrayList<Especialidad> ListaEspecialidades3 = new ArrayList<>();
         
         Especialidad esp1 = new Especialidad(191, "Radiología");
         Especialidad esp2 = new Especialidad(100, "Cardiología");
         Especialidad esp3 = new Especialidad(30, "Pediatría");
+        
+        //agregar cada especialidad a la lista especialidades
+        ListaEspecialidades1.add(esp1);
+        ListaEspecialidades2.add(esp2);
+        ListaEspecialidades3.add(esp3);
         
         //creacion de los profesionales
         ArrayList<Profesional> ListaProfesionales = new ArrayList<>();
@@ -147,56 +173,102 @@ public class clinica_frame extends javax.swing.JFrame {
         Profesional p1 = new Profesional(1,"Jennie", "Kim", 30345432);
         Profesional p2 = new Profesional(2,"Jisoo", "Kim", 33345432);
         Profesional p3 = new Profesional(3,"Yuna", "Kang", 36345432);
-        
-        //creacion de los pacientes
-        Paciente pa1 = new Paciente(4, "Rose", "Park", 44154436, "dolor de cabeza");
-        Paciente pa2 = new Paciente(5, "Lisa", "Manoban", 42454354, "apuñalada");
-        
-        //creacion de los secretarios
-        Secretaria sec1 = new Secretaria("secretaría, piso1", "Carlos", "Lopez", 16345433);
-        Secretaria sec2 = new Secretaria("secretaría, piso1", "Vilma", "Benitez", 16344453);
-        
-        //agregar cada especialidad a la lista especialidades
-        ListaEspecialidades.add(esp1);
-        ListaEspecialidades.add(esp2);
-        ListaEspecialidades.add(esp3);
-        
-        
-        
         //agregar cada profesional a la lista de profesionales
         ListaProfesionales.add(p1);
         ListaProfesionales.add(p2);
         ListaProfesionales.add(p3);
         
-     
+        //agregar al array de especialidad de la clase profesional, su profesional correspondiente
+        p1.setEsp(ListaEspecialidades1);
+        p2.setEsp(ListaEspecialidades2);
+        p3.setEsp(ListaEspecialidades3);
         
-    
+        //creacion de los pacientes
+        ArrayList<Paciente> ListaPacientes = new ArrayList<>();
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        Paciente pa1 = new Paciente(4, "Rose", "Park", 44154436, "dolor de cabeza");
+        Paciente pa2 = new Paciente(5, "Lisa", "Manoban", 42454354, "apuñalada");
+        Paciente pa3 = new Paciente(5, "Goku", "Son", 42454354, "biopsia");
+       
+        
+        //agregar cada paciente a la lista de paciente
+        
+        
+        //creacion de los secretarios
+        Secretaria sec1 = new Secretaria("secretaría, piso1", "Carlos", "Lopez", 16345433);
+        Secretaria sec2 = new Secretaria("secretaría, piso1", "Vilma", "Benitez", 16344453);
+        
+        
+        //creacion de turnos
+        ArrayList <Turno> AgendaTurno1 = new ArrayList<>();
+        ArrayList <Turno> AgendaTurno2 = new ArrayList<>();
+        ArrayList <Turno> AgendaTurno3 = new ArrayList<>();
+        
+        Date fec1 = new Date(123,8,12, 5,30);
+        Date fec2 = new Date(123,8,12, 6,00);
+        Date fec3 = new Date(123,8,12, 6,30);
+        
+        //agregación de los turnos a la lista
+        AgendaTurno1.add(new Turno(1,fec1,pa1,sec2));
+        AgendaTurno2.add(new Turno(2,fec2,pa2,sec1));
+        AgendaTurno3.add(new Turno(3,fec3,pa3,sec1));
+        
+        esp1.setTur(AgendaTurno1);
+        esp2.setTur(AgendaTurno2);
+        esp3.setTur(AgendaTurno3);
+        
+        for(Profesional pr : ListaProfesionales) {
+            System.out.println("Profesional: " + pr.getApellido() + ", " + pr.getNombre());
+            for(Especialidad e : pr.getEsp()){
+                System.out.println("Especialidad: " + e.getNombre());
+                for(Turno t : e.getTur()){
+                    System.out.println("Numero de turno: " + t.getNro_turno());
+                    System.out.println("Paciente: " + t.getPaci());
+                    System.out.println("Secretario/a: " + t.getSec());
+                    System.out.println("Fecha y hora: " + t.getFecha_turno());
+                    System.out.println("-------------------------------------------");
+                }
+            }
+        }
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        ArrayList<Paciente> listaPac = new ArrayList<>();
+        
+        Paciente pa1 = new Paciente(4, "Rose", "Park",70, 44154436, "dolor de cabeza","inssep", true);
+        Paciente pa2 = new Paciente(5, "Lisa", "Manoban",32, 42454354, "apuñalada","osdop", false);
+        Paciente pa3 = new Paciente(5, "Goku", "Son",67, 42454354, "biopsia","inssep", true);
+        Paciente pa4 = new Paciente(5, "Romina", "Caceres",21, 42454354, "hinchazon","sancor salud", true);
+        
+        listaPac.add(pa1);
+        listaPac.add(pa2);
+        listaPac.add(pa3);
+        listaPac.add(pa4);
+        
+        System.out.println("Pacientes mayores a 65 afiliados al INSSEP: ");
+        
+        for(Paciente pac : listaPac){
+            if(pac.getEstado() == true && pac.getEdad() > 65 && pac.getObraSoc() == "inssep") {
+                System.out.println(pac.getNombre() + ", " + pac.getApellido());
+            }
+        }
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       
+        ArrayList<Recurso> re = new ArrayList<>();
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,5 +308,7 @@ public class clinica_frame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     // End of variables declaration//GEN-END:variables
 }
