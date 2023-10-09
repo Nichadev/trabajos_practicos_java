@@ -20,6 +20,10 @@ public class Tabla extends javax.swing.JFrame {
     
     public Tabla() {
         initComponents();
+        init();
+        
+    }
+    private void init(){
         modelo.addColumn("Id");
         modelo.addColumn("Apellido");
         modelo.addColumn("Nombre/s");
@@ -27,9 +31,10 @@ public class Tabla extends javax.swing.JFrame {
         modelo.addColumn("Domicilio");
         modelo.addColumn("Celular");
         modelo.addColumn("E-mail"); 
-        this.tabla_datos.setModel(modelo);
+        tabla_datos.setModel(modelo);
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,11 +71,6 @@ public class Tabla extends javax.swing.JFrame {
         panelinfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Información", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("JetBrainsMono NF", 0, 12))); // NOI18N
 
         boton_nuevo.setText("Nuevo");
-        boton_nuevo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boton_nuevoMouseClicked(evt);
-            }
-        });
         boton_nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_nuevoActionPerformed(evt);
@@ -188,7 +188,7 @@ public class Tabla extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Long.class, java.lang.String.class, java.lang.Long.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -232,13 +232,19 @@ public class Tabla extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_nuevoActionPerformed
-        DefaultTableModel modeloTabla = new DefaultTableModel(); 
+        Cliente cl = new Cliente();
+        
+        //int id, String apellido, String nombre, String domicilio, 
+        //String celular,String email, int dni
+        cl.setApellido(entrada_ape.getText());
+        cl.setNombre(entrada_nom.getText());
+        cl.setDomicilio(entrada_domicilio.getText());
+        cl.setCelular(entrada_celular.getText());
+        cl.setEmail(entrada_email.getText());
+        cl.setDni(entrada_dni.getText());
+        
         
     }//GEN-LAST:event_boton_nuevoActionPerformed
-
-    private void boton_nuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_nuevoMouseClicked
-        
-    }//GEN-LAST:event_boton_nuevoMouseClicked
 
     /**
      * @param args the command line arguments

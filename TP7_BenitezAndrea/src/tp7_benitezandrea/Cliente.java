@@ -12,22 +12,22 @@ public class Cliente {
     private int id;
     private String apellido;
     private String nombre;
-    private int dni;
     private String domicilio;
-    private int celular;
+    private String celular;
     private String email;
+    private String dni;
     
     public Cliente() {
         this.setId(0);
         this.setApellido("");
         this.setNombre("");
-        this.setDni(0);
+        this.setDni("");
         this.setDomicilio("");
-        this.setCelular(0);
+        this.setCelular("");
         this.setEmail("");
     }
     
-    public Cliente(int id, String apellido, String nombre, int dni, String domicilio, int celular, String email) {
+    public Cliente(int id, String apellido, String nombre, String domicilio, String celular,String email, String dni) {
         this.setId(id);
         this.setApellido(apellido);
         this.setNombre(nombre);
@@ -61,11 +61,11 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -77,11 +77,11 @@ public class Cliente {
         this.domicilio = domicilio;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
@@ -96,7 +96,7 @@ public class Cliente {
     public Object[] toObject(){
         Object[] info = new Object[]{
             getId(), getApellido(), getNombre(),
-            getDni(), getDomicilio(), getCelular(), getEmail()
+            getDomicilio(), getCelular(), getEmail(), getDni()
         };
         return info;
     }
