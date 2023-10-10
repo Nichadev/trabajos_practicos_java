@@ -338,38 +338,26 @@ public class Tabla extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_actualizarActionPerformed
 
     private void boton_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_buscarActionPerformed
-    
-    /*
-        quise filtrar los datos mediante un id de esta forma pero al parecer no me funciona y me frustré.
-        se que hay otra forma de hacer la filtracion y es haciendo otra tabla que se trate solo de filtrar.
-        Pero, ¿se puede filtrar de la forma en que lo hice? Profesor, si usted puede armarlo de esta forma
-        puede plasmarlo aquí? gracias
-    */
         
-    //marco la columna 0 porque quiero obtener el id
-    int indiceColumna = 0; 
-
-    // inicializo un contador para las filas
-    int fila = 0;
-
-    // itera mientras el índice de fila sea menor que la cantidad de filas
-    while (fila < modelo.getRowCount()) {
-        // obtengo el valor de la fila en la columna específica
-        Object valor = modelo.getValueAt(fila, indiceColumna);
-
-        // Compara el valor con el valor de filtro
-        if (!valor.equals(entrada_id.getText())) {
-            // Si no coincide, elimina la fila del modelo
-            modelo.removeRow(fila);
-        } else {
-            // Si coincide, avanza al siguiente índice de fila
-            fila++;
+        ArrayList<Object> datos_guardados = new ArrayList<>();
+        ArrayList<Object> datos_filtrados = new ArrayList<>();
+        
+        int cantColumna = modelo.getColumnCount();
+        int cantFila = modelo.getRowCount();
+        int counrow = 0;
+        //itero una fila para luego iterar cada columna y obtener sus datos
+        //para guardar los registros en un arrray
+        for(int f = 0; f < cantFila; f++){
+            datos_guardados.add(modelo.getValueAt(f, 0));
+            datos_guardados.add(modelo.getValueAt(f, 1));
+            datos_guardados.add(modelo.getValueAt(f, 2));
+            datos_guardados.add(modelo.getValueAt(f, 3));
+            datos_guardados.add(modelo.getValueAt(f, 4));
+            datos_guardados.add(modelo.getValueAt(f, 5));
+            datos_guardados.add(modelo.getValueAt(f, 6));
         }
-    }
-
-    // Actualiza la vista de la tabla
-    tabla_datos.repaint();
-
+        
+        
         
     }//GEN-LAST:event_boton_buscarActionPerformed
 
