@@ -4,6 +4,8 @@
  */
 package tp7_benitezandrea;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,6 +23,7 @@ public class Tabla extends javax.swing.JFrame {
     public Tabla() {
         initComponents();
         init();
+        rellenar();
         
     }
     private void init(){
@@ -33,7 +36,26 @@ public class Tabla extends javax.swing.JFrame {
         modelo.addColumn("E-mail"); 
         tabla_datos.setModel(modelo);
     }
-    
+    //metodo para vaciar los campos del frame
+    private void vaciar(){
+        entrada_id.setText("");
+        entrada_ape.setText("");
+        entrada_nom.setText("");
+        entrada_domicilio.setText("");
+        entrada_email.setText("");
+        entrada_celular.setText("");
+        entrada_dni.setText("");
+    }
+    private void rellenar(){
+        entrada_id.setText("1");
+        entrada_ape.setText("Benitez");
+        entrada_nom.setText("Andrea");
+        entrada_domicilio.setText("calle 1");
+        entrada_email.setText("email@gmail.com");
+        entrada_celular.setText("3644622066");
+        entrada_dni.setText("44154436");
+    }
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,6 +84,7 @@ public class Tabla extends javax.swing.JFrame {
         entrada_id = new javax.swing.JTextField();
         entrada_domicilio = new javax.swing.JTextField();
         entrada_celular = new javax.swing.JTextField();
+        boton_buscar = new javax.swing.JButton();
         panelLista = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_datos = new javax.swing.JTable();
@@ -78,8 +101,18 @@ public class Tabla extends javax.swing.JFrame {
         });
 
         boton_actualizar.setText("Actualizar");
+        boton_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_actualizarActionPerformed(evt);
+            }
+        });
 
         boton_eliminar.setText("Eliminar");
+        boton_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_eliminarActionPerformed(evt);
+            }
+        });
 
         label_email.setFont(new java.awt.Font("JetBrainsMono NFM", 0, 14)); // NOI18N
         label_email.setText("E-mail");
@@ -102,37 +135,47 @@ public class Tabla extends javax.swing.JFrame {
         label_nombres.setFont(new java.awt.Font("JetBrainsMono NFM", 0, 14)); // NOI18N
         label_nombres.setText("Nombre/s");
 
+        boton_buscar.setText("Buscar");
+        boton_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_buscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelinfoLayout = new javax.swing.GroupLayout(panelinfo);
         panelinfo.setLayout(panelinfoLayout);
         panelinfoLayout.setHorizontalGroup(
             panelinfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelinfoLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(boton_nuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(boton_actualizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(boton_eliminar)
-                .addGap(25, 25, 25))
-            .addGroup(panelinfoLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(panelinfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_celular)
-                    .addComponent(label_email)
-                    .addComponent(label_nombres)
-                    .addComponent(label_dni)
-                    .addComponent(label_apellido)
-                    .addComponent(label_id)
-                    .addComponent(label_domicilio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelinfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(entrada_celular, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(entrada_email, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(entrada_domicilio)
-                    .addComponent(entrada_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(entrada_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(entrada_ape, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(entrada_id, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelinfoLayout.createSequentialGroup()
+                .addGroup(panelinfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(boton_buscar)
+                    .addGroup(panelinfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelinfoLayout.createSequentialGroup()
+                            .addGap(14, 14, 14)
+                            .addComponent(boton_nuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(boton_eliminar)
+                            .addGap(7, 7, 7)
+                            .addComponent(boton_actualizar))
+                        .addGroup(panelinfoLayout.createSequentialGroup()
+                            .addGap(27, 27, 27)
+                            .addGroup(panelinfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(label_celular)
+                                .addComponent(label_email)
+                                .addComponent(label_nombres)
+                                .addComponent(label_dni)
+                                .addComponent(label_apellido)
+                                .addComponent(label_id)
+                                .addComponent(label_domicilio))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(panelinfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(entrada_celular, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(entrada_email, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(entrada_domicilio)
+                                .addComponent(entrada_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(entrada_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(entrada_ape, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(entrada_id, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(24, 24, 24))
         );
         panelinfoLayout.setVerticalGroup(
@@ -166,8 +209,10 @@ public class Tabla extends javax.swing.JFrame {
                 .addGroup(panelinfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_email)
                     .addComponent(entrada_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addGroup(panelinfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(boton_buscar)
+                .addGap(25, 25, 25)
+                .addGroup(panelinfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_nuevo)
                     .addComponent(boton_actualizar)
                     .addComponent(boton_eliminar))
@@ -193,6 +238,11 @@ public class Tabla extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        tabla_datos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_datosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tabla_datos);
@@ -232,10 +282,13 @@ public class Tabla extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_nuevoActionPerformed
+        //instancio un objeto de la clase cliente
         Cliente cl = new Cliente();
         
-        //int id, String apellido, String nombre, String domicilio, 
-        //String celular,String email, int dni
+        
+        //agrego los datos de entrada que obtengo del frame a cada metodo de los atributos de cliente 
+        
+        cl.setId(Integer.parseInt(entrada_id.getText()));
         cl.setApellido(entrada_ape.getText());
         cl.setNombre(entrada_nom.getText());
         cl.setDomicilio(entrada_domicilio.getText());
@@ -243,8 +296,67 @@ public class Tabla extends javax.swing.JFrame {
         cl.setEmail(entrada_email.getText());
         cl.setDni(entrada_dni.getText());
         
+        //agrego a la fila de la tabla los datos ingresados
+        modelo.addRow(cl.toObject());
         
+        //llamo al metodo vaciar creado mas arriba
+        vaciar();
+        
+        tabla_datos.setModel(modelo);
     }//GEN-LAST:event_boton_nuevoActionPerformed
+
+    private void boton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_eliminarActionPerformed
+        //obtengo el indice de la fila seleccionada
+        int index = tabla_datos.getSelectedRow();
+        
+        //remuevo la fila seleccionada
+        modelo.removeRow(index); 
+        
+        vaciar();
+             
+        
+    }//GEN-LAST:event_boton_eliminarActionPerformed
+
+    private void boton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_actualizarActionPerformed
+        int index_table = tabla_datos.getSelectedRow();
+        int index_model = tabla_datos.convertColumnIndexToModel(index_table);
+        
+        modelo.setValueAt(entrada_id.getText(), index_model, 0);
+        modelo.setValueAt(entrada_ape.getText(), index_model, 1);
+        modelo.setValueAt(entrada_nom.getText(), index_model, 2);
+        modelo.setValueAt(entrada_domicilio.getText(), index_model, 3);
+        modelo.setValueAt(entrada_celular.getText(), index_model, 4);
+        modelo.setValueAt(entrada_email.getText(), index_model, 5);
+        modelo.setValueAt(entrada_dni.getText(), index_model, 6);
+        
+        
+        
+    }//GEN-LAST:event_boton_actualizarActionPerformed
+
+    private void boton_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_buscarActionPerformed
+        
+    }//GEN-LAST:event_boton_buscarActionPerformed
+
+    private void tabla_datosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_datosMouseClicked
+        int index_table = tabla_datos.getSelectedRow();
+        int index_model = tabla_datos.convertColumnIndexToModel(index_table);
+        
+        int id = (int)modelo.getValueAt(index_model, 0);
+        String ap = (String)modelo.getValueAt(index_model, 1);
+        String nom = (String)modelo.getValueAt(index_model, 2);
+        String dom = (String)modelo.getValueAt(index_model, 3);
+        String cel= (String)modelo.getValueAt(index_model, 4);
+        String email = (String)modelo.getValueAt(index_model, 5);
+        String dni = (String)modelo.getValueAt(index_model, 6);
+        
+        this.entrada_id.setText(String.valueOf(id));
+        this.entrada_ape.setText(ap);
+        this.entrada_nom.setText(nom);
+        this.entrada_domicilio.setText(dom);
+        this.entrada_celular.setText(cel);
+        this.entrada_email.setText(email);
+        this.entrada_dni.setText(dni);
+    }//GEN-LAST:event_tabla_datosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -283,6 +395,7 @@ public class Tabla extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_actualizar;
+    private javax.swing.JButton boton_buscar;
     private javax.swing.JButton boton_eliminar;
     private javax.swing.JButton boton_nuevo;
     private javax.swing.JTextField entrada_ape;

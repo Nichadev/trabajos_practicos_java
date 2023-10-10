@@ -52,35 +52,41 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                  <Component id="boton_nuevo" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="boton_actualizar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="boton_eliminar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="label_celular" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="label_email" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="label_nombres" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="label_dni" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="label_apellido" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="label_id" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="label_domicilio" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="entrada_celular" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="entrada_email" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
-                      <Component id="entrada_domicilio" alignment="0" max="32767" attributes="0"/>
-                      <Component id="entrada_dni" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
-                      <Component id="entrada_nom" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
-                      <Component id="entrada_ape" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
-                      <Component id="entrada_id" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="boton_buscar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <Component id="boton_nuevo" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="boton_eliminar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              <Component id="boton_actualizar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="label_celular" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label_email" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label_nombres" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label_dni" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label_apellido" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label_id" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label_domicilio" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="entrada_celular" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="entrada_email" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                  <Component id="entrada_domicilio" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="entrada_dni" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="entrada_nom" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
+                                  <Component id="entrada_ape" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
+                                  <Component id="entrada_id" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
@@ -124,11 +130,13 @@
                       <Component id="label_email" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="entrada_email" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="boton_nuevo" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="boton_actualizar" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="boton_eliminar" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="boton_buscar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="boton_nuevo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="boton_actualizar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="boton_eliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="100" max="32767" attributes="0"/>
               </Group>
@@ -148,11 +156,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_actualizarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="boton_eliminar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_eliminarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="entrada_email">
         </Component>
@@ -223,6 +237,14 @@
         <Component class="javax.swing.JTextField" name="entrada_domicilio">
         </Component>
         <Component class="javax.swing.JTextField" name="entrada_celular">
+        </Component>
+        <Component class="javax.swing.JButton" name="boton_buscar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Buscar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_buscarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -320,6 +342,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabla_datosMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
