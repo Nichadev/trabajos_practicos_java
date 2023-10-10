@@ -5,6 +5,7 @@
 package tp7_benitezandrea;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -46,6 +47,8 @@ public class Tabla extends javax.swing.JFrame {
         entrada_celular.setText("");
         entrada_dni.setText("");
     }
+    //creo esto para no tener que rellenar a cada rato los campos
+    //pero estoy enterada de q no se hace esto, no se preocupe
     private void rellenar(){
         entrada_id.setText("1");
         entrada_ape.setText("Benitez");
@@ -291,12 +294,12 @@ public class Tabla extends javax.swing.JFrame {
         cl.setId(Integer.parseInt(entrada_id.getText()));
         cl.setApellido(entrada_ape.getText());
         cl.setNombre(entrada_nom.getText());
-        cl.setDomicilio(entrada_domicilio.getText());
-        cl.setCelular(entrada_celular.getText());
-        cl.setEmail(entrada_email.getText());
-        cl.setDni(entrada_dni.getText());
+        cl.setDomicilio(entrada_dni.getText());
+        cl.setCelular(entrada_domicilio.getText());
+        cl.setEmail(entrada_celular.getText());
+        cl.setDni(entrada_email.getText());
         
-        //agrego a la fila de la tabla los datos ingresados
+        //agrego a la fila de la tabla los datos ingresados con el metodo toObject()
         modelo.addRow(cl.toObject());
         
         //llamo al metodo vaciar creado mas arriba
@@ -312,6 +315,7 @@ public class Tabla extends javax.swing.JFrame {
         //remuevo la fila seleccionada
         modelo.removeRow(index); 
         
+        //llamo al metodo vaciar
         vaciar();
              
         
@@ -324,16 +328,48 @@ public class Tabla extends javax.swing.JFrame {
         modelo.setValueAt(entrada_id.getText(), index_model, 0);
         modelo.setValueAt(entrada_ape.getText(), index_model, 1);
         modelo.setValueAt(entrada_nom.getText(), index_model, 2);
-        modelo.setValueAt(entrada_domicilio.getText(), index_model, 3);
-        modelo.setValueAt(entrada_celular.getText(), index_model, 4);
-        modelo.setValueAt(entrada_email.getText(), index_model, 5);
-        modelo.setValueAt(entrada_dni.getText(), index_model, 6);
+        modelo.setValueAt(entrada_dni.getText(), index_model, 3);
+        modelo.setValueAt(entrada_domicilio.getText(), index_model, 4);
+        modelo.setValueAt(entrada_celular.getText(), index_model, 5);
+        modelo.setValueAt(entrada_email.getText(), index_model, 6);
         
         
         
     }//GEN-LAST:event_boton_actualizarActionPerformed
 
     private void boton_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_buscarActionPerformed
+    
+    /*
+        quise filtrar los datos mediante un id de esta forma pero al parecer no me funciona y me frustré.
+        se que hay otra forma de hacer la filtracion y es haciendo otra tabla que se trate solo de filtrar.
+        Pero, ¿se puede filtrar de la forma en que lo hice? Profesor, si usted puede armarlo de esta forma
+        puede plasmarlo aquí? gracias
+    */
+        
+    //marco la columna 0 porque quiero obtener el id
+    int indiceColumna = 0; 
+
+    // inicializo un contador para las filas
+    int fila = 0;
+
+    // itera mientras el índice de fila sea menor que la cantidad de filas
+    while (fila < modelo.getRowCount()) {
+        // obtengo el valor de la fila en la columna específica
+        Object valor = modelo.getValueAt(fila, indiceColumna);
+
+        // Compara el valor con el valor de filtro
+        if (!valor.equals(entrada_id.getText())) {
+            // Si no coincide, elimina la fila del modelo
+            modelo.removeRow(fila);
+        } else {
+            // Si coincide, avanza al siguiente índice de fila
+            fila++;
+        }
+    }
+
+    // Actualiza la vista de la tabla
+    tabla_datos.repaint();
+
         
     }//GEN-LAST:event_boton_buscarActionPerformed
 
@@ -344,18 +380,18 @@ public class Tabla extends javax.swing.JFrame {
         int id = (int)modelo.getValueAt(index_model, 0);
         String ap = (String)modelo.getValueAt(index_model, 1);
         String nom = (String)modelo.getValueAt(index_model, 2);
-        String dom = (String)modelo.getValueAt(index_model, 3);
-        String cel= (String)modelo.getValueAt(index_model, 4);
-        String email = (String)modelo.getValueAt(index_model, 5);
-        String dni = (String)modelo.getValueAt(index_model, 6);
+        String dni = (String)modelo.getValueAt(index_model, 3);
+        String dom = (String)modelo.getValueAt(index_model, 4);
+        String cel= (String)modelo.getValueAt(index_model, 5);
+        String email = (String)modelo.getValueAt(index_model, 6);
         
         this.entrada_id.setText(String.valueOf(id));
         this.entrada_ape.setText(ap);
         this.entrada_nom.setText(nom);
+        this.entrada_dni.setText(dni);
         this.entrada_domicilio.setText(dom);
         this.entrada_celular.setText(cel);
         this.entrada_email.setText(email);
-        this.entrada_dni.setText(dni);
     }//GEN-LAST:event_tabla_datosMouseClicked
 
     /**
